@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}Téléscopes{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Téléscopes</h1>
+
+<h2>Téléscopes pour enfants</h2>
+<div class="table-wrapper">
+    <table class="table table-bordered table-striped mb-4">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Date de sortie</th>
+                <th>Score</th>
+                <th>Détail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for telescope in telescopes_enfants %}
+            <tr>
+                <td>{{ telescope.marque }}</td>
+                <td>{{ telescope.modele }}</td>
+                <td>{{ telescope.date_sortie }}</td>
+                <td>{{ telescope.score }}/5</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('telescope_detail', telescope_id=telescope.id) }}">Voir détail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2>Automatisés</h2>
+<div class="table-wrapper">
+    <table class="table table-bordered table-striped mb-4">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Date de sortie</th>
+                <th>Score</th>
+                <th>Détail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for telescope in telescopes_auto %}
+            <tr>
+                <td>{{ telescope.marque }}</td>
+                <td>{{ telescope.modele }}</td>
+                <td>{{ telescope.date_sortie }}</td>
+                <td>{{ telescope.score }}/5</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('telescope_detail', telescope_id=telescope.id) }}">Voir détail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2>Téléscopes complets</h2>
+<div class="table-wrapper">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Date de sortie</th>
+                <th>Score</th>
+                <th>Détail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for telescope in telescopes_complets %}
+            <tr>
+                <td>{{ telescope.marque }}</td>
+                <td>{{ telescope.modele }}</td>
+                <td>{{ telescope.date_sortie }}</td>
+                <td>{{ telescope.score }}/5</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('telescope_detail', telescope_id=telescope.id) }}">Voir détail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

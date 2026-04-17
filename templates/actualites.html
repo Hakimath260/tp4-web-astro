@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block content %}
+<h1>Actualités</h1>
+
+<p class="mb-4">
+    <a href="{{ url_for('add_actualite') }}" class="btn btn-success">Ajouter une actualité</a>
+</p>
+
+<div id="liste-actualites">
+    {% if actualites %}
+        {% for actu in actualites %}
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h3 class="card-title">{{ actu.titre }}</h3>
+                <p class="text-muted"><strong>Date :</strong> {{ actu.date_publication }}</p>
+                <p class="card-text">{{ actu.contenu }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info" id="message-vide">
+            Aucune actualité disponible pour le moment.
+        </div>
+    {% endif %}
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+    const socket = io();
+
+    socket.on("nouvelle_actualite", function(data) {
+        const liste = document.getElementById("liste-actualites");
+        const messageVide = document.getElementById("message-vide");
+
+        if (messageVide) {
+            messageVide.remove();
+        }
+
+        const bloc = document.createElement("div");
+        bloc.className = "card shadow-sm mb-4";
+        bloc.innerHTML = `
+            <div class="card-body">
+                <h3 class="card-title">${data.titre}</h3>
+                <p class="text-muted"><strong>Date :</strong> ${data.date_publication}</p>
+                <p class="card-text">${data.contenu}</p>
+            </div>
+        `;
+
+        liste.prepend(bloc);
+    });
+</script>
+{% endblock %}

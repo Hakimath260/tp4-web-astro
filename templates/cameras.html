@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}Appareil Photo{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Appareil Photo</h1>
+
+<h2>Amateur</h2>
+<div class="table-wrapper">
+    <table class="table table-bordered table-striped mb-4">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Date de sortie</th>
+                <th>Score</th>
+                <th>Détail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for camera in cameras_amateur %}
+            <tr>
+                <td>{{ camera.marque }}</td>
+                <td>{{ camera.modele }}</td>
+                <td>{{ camera.date_sortie }}</td>
+                <td>{{ camera.score }}/5</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('camera_detail', camera_id=camera.id) }}">Voir détail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2>Amateur sérieux</h2>
+<div class="table-wrapper">
+    <table class="table table-bordered table-striped mb-4">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Date de sortie</th>
+                <th>Score</th>
+                <th>Détail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for camera in cameras_serieux %}
+            <tr>
+                <td>{{ camera.marque }}</td>
+                <td>{{ camera.modele }}</td>
+                <td>{{ camera.date_sortie }}</td>
+                <td>{{ camera.score }}/5</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('camera_detail', camera_id=camera.id) }}">Voir détail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2>Professionnel</h2>
+<div class="table-wrapper">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Date de sortie</th>
+                <th>Score</th>
+                <th>Détail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for camera in cameras_pro %}
+            <tr>
+                <td>{{ camera.marque }}</td>
+                <td>{{ camera.modele }}</td>
+                <td>{{ camera.date_sortie }}</td>
+                <td>{{ camera.score }}/5</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('camera_detail', camera_id=camera.id) }}">Voir détail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

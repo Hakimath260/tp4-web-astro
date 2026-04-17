@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Photographies{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Photographies</h1>
+
+{% if photos %}
+<div class="row">
+    {% for photo in photos %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ url_for('static', filename='images/photographies/' + photo) }}"
+                 class="card-img-top"
+                 alt="{{ photo }}"
+                 style="height: 250px; object-fit: cover;">
+
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ photo.rsplit('.', 1)[0].replace('_', ' ').replace('-', ' ').title() }}
+                </h5>
+                <p class="card-text text-muted">
+                    Photographie présente sur le site.
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    Aucune photographie n'est encore disponible dans le site.
+</div>
+{% endif %}
+{% endblock %}

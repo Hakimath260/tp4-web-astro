@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Bienvenue sur le site Astronomie</h1>
+<p>Utilisateur connecté : <strong>{{ session.username }}</strong></p>
+<p>Utilisez le menu pour accéder aux différentes catégories du site.</p>
+{% endblock %}

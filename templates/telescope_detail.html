@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Détail télescope{% endblock %}
+
+{% block content %}
+<h1>{{ telescope.marque }} {{ telescope.modele }}</h1>
+
+<div class="row g-4 align-items-stretch">
+    <div class="col-lg-5">
+        <div class="card shadow-sm h-100">
+            <img
+                src="{{ url_for('static', filename='images/photographies/' + image_filename) }}"
+                class="card-img-top"
+                alt="Image de {{ telescope.marque }} {{ telescope.modele }}"
+                style="height: 420px; object-fit: cover;"
+            >
+        </div>
+    </div>
+
+    <div class="col-lg-7">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <p><strong>Catégorie :</strong> {{ telescope.categorie }}</p>
+                <p><strong>Marque :</strong> {{ telescope.marque }}</p>
+                <p><strong>Modèle :</strong> {{ telescope.modele }}</p>
+                <p><strong>Date de sortie :</strong> {{ telescope.date_sortie }}</p>
+                <p><strong>Score :</strong> {{ telescope.score }}/5</p>
+                <p><strong>Résumé :</strong> {{ telescope.resume }}</p>
+
+                <a href="{{ url_for('telescopes') }}" class="btn btn-primary mt-3">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

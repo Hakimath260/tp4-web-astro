@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}Ajouter une actualité{% endblock %}
+
+{% block content %}
+<h1>Ajouter une actualité</h1>
+
+<form method="post" class="w-50">
+    <div class="mb-3">
+        <label class="form-label">Titre</label>
+        <input type="text" name="titre" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Contenu</label>
+        <textarea name="contenu" class="form-control" rows="4" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Date de publication</label>
+        <input type="text" name="date_publication" class="form-control" placeholder="17/04/2026" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+</form>
+{% endblock %}
